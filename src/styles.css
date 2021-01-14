@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background-size: cover;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 200px;
+}
+
+h1,
+h2 {
+  color: #11698e;
+}
+
+.header {
+  display: block;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#mainWeather {
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#tempConverts a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #591cff;
+  transition: 200ms ease-in-out;
+}
+
+#tempConverts a:hover {
+  color: darkorange;
+  font-weight: bold;
+}
+
+#actual-temp {
+  margin: 0 auto;
+}
+
+.fiveDays {
+  display: block;
+  margin: 0 auto;
+}
