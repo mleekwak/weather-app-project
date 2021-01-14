@@ -45,9 +45,14 @@ h2 {
 
 #actual-temp {
   margin: 0 auto;
+  font-weight: 300;
 }
 
 .fiveDays {
   display: block;
   margin: 0 auto;
+}
+
+footer {
+  margin: 10px;
 }
