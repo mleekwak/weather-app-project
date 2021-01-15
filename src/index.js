@@ -49,6 +49,8 @@ function citySearch(event) {
     let cel = document.querySelector("#celsius");
     let far = document.querySelector("#farenheit");
     let temp = document.querySelector("#actual-temp");
+
+
     temp.innerHTML = Math.round(response.data.main.temp) + "°F";
     cel.addEventListener("click", fConvert);
     far.addEventListener("click", cConvert);
@@ -65,8 +67,22 @@ function citySearch(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
     }
-  }
-}
+
+    let windSpeed = document.querySelector("#windSpeed");
+    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
+
+    let weatherDescription = document.querySelector("#weatherDescription");
+    weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
+    
+    let precip = document.querySelector("#precip");
+    precip.innerHTML = `Precipitation: ${response.data.precipitation[0].value}`;
+    }
+
+    let mainIcon = document.querySelector("#mainIcon");
+    mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+    }
+
 
 //Geolocation
 let currentButton = document.querySelector("#currentLocation-button");
@@ -83,6 +99,7 @@ function retrievePosition(position) {
 }
 
 function getTemp(response) {
+  console.log(response);
   let cel = document.querySelector("#celsius");
   let far = document.querySelector("#farenheit");
   let temp = document.querySelector("#actual-temp");
@@ -104,4 +121,18 @@ function getTemp(response) {
     event.preventDefault();
     temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
   }
+  let windSpeed = document.querySelector("#windSpeed");
+    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
+
+    let weatherDescription = document.querySelector("#weatherDescription");
+  
+    weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
+    
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
+
+   let mainIcon = document.querySelector("#mainIcon");
+    mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+   
 }

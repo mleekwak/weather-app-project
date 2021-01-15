@@ -48,6 +48,11 @@ h2 {
   font-weight: 300;
 }
 
+#facts {
+  font-size: 10px;
+  text-align: left;
+}
+
 .fiveDays {
   display: block;
   margin: 0 auto;
