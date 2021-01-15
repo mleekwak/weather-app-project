@@ -1,4 +1,4 @@
-//get date and time
+/**get date and time
 let today = document.querySelector("#date-temp");
 let dateTime = new Date();
 let days = [
@@ -29,6 +29,9 @@ let month = [
 let actualDay = days[dateTime.getDay()];
 let actualMonth = month[dateTime.getMonth()];
 today.innerHTML = `${actualDay} - ${actualMonth} ${dateTime.getDate()}, ${dateTime.getFullYear()} at ${dateTime.getHours()}:${dateTime.getMinutes()}`;
+**/
+
+
 
 //Search city and replace title; search from Weather API
 let searchButton = document.querySelector("#submit-button");
@@ -60,22 +63,22 @@ function citySearch(event) {
     function fConvert(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(
-        (`${response.data.main.temp}` - 32) * (5 / 9)
-      )}°C`;
+        (`${response.data.main.temp}` - 32) * (5 / 9))}°C`;
     }
     function cConvert(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
     }
 
+    
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
 
     let weatherDescription = document.querySelector("#weatherDescription");
     weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
     
-    let precip = document.querySelector("#precip");
-    precip.innerHTML = `Precipitation: ${response.data.precipitation[0].value}`;
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
     let mainIcon = document.querySelector("#mainIcon");
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -111,17 +114,17 @@ function getTemp(response) {
   //f and c conversion
   //((1°C × 9/5) + 32 = 33.8°F
   //(1°F − 32) × 5/9 = -17.22°C
-  function fConvert(event) {
-    event.preventDefault();
-    temp.innerHTML = `${Math.round(
-      (`${response.data.main.temp}` - 32) * (5 / 9)
-    )}°C`;
-  }
-  function cConvert(event) {
-    event.preventDefault();
-    temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
-  }
-  let windSpeed = document.querySelector("#windSpeed");
+    function fConvert(event) {
+      event.preventDefault();
+      temp.innerHTML = `${Math.round(
+        (`${response.data.main.temp}` - 32) * (5 / 9)
+      )}°C`;
+    }
+    function cConvert(event) {
+      event.preventDefault();
+      temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+    }
+    let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
 
     let weatherDescription = document.querySelector("#weatherDescription");
@@ -133,6 +136,4 @@ function getTemp(response) {
 
    let mainIcon = document.querySelector("#mainIcon");
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-
-   
 }

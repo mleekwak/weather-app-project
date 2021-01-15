@@ -4,7 +4,7 @@ body {
   margin: 0 auto;
   font-family: "Quicksand", sans-serif;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-  background-size: cover;
+  background-repeat: none;
 }
 
 img {
@@ -17,6 +17,7 @@ img {
 h1,
 h2 {
   color: #11698e;
+  font-size: 14px;
 }
 
 .header {
@@ -53,7 +54,7 @@ h2 {
   text-align: left;
 }
 
-.fiveDays {
+.forecast {
   display: block;
   margin: 0 auto;
 }
