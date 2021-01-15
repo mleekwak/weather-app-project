@@ -76,12 +76,12 @@ function citySearch(event) {
     
     let precip = document.querySelector("#precip");
     precip.innerHTML = `Precipitation: ${response.data.precipitation[0].value}`;
-    }
 
     let mainIcon = document.querySelector("#mainIcon");
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
     }
+}
 
 
 //Geolocation
@@ -129,7 +129,7 @@ function getTemp(response) {
     weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
     
     let humidity = document.querySelector("#humidity");
-    humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
+    humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
    let mainIcon = document.querySelector("#mainIcon");
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
