@@ -99,7 +99,27 @@ function retrievePosition(position) {
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   axios.get(url).then(getTemp);
+
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  axios.get(forecastUrl).then(getForecast);
 }
+
+function getForecast (response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.list[0];
+
+  forecastElement.innerHTML = 
+        ` <div class="col-2">
+            <p>12:00</p>
+        
+            <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"></img>
+            <div class = weather-temp> 
+              <strong> ${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°;
+            </div>
+          </div>`
+}
+
+
 
 function getTemp(response) {
   console.log(response);
@@ -137,3 +157,7 @@ function getTemp(response) {
    let mainIcon = document.querySelector("#mainIcon");
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
+
+//Forecasting 
+
+
