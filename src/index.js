@@ -1,4 +1,4 @@
-/**get date and time
+//Get date and time
 let today = document.querySelector("#date-temp");
 let dateTime = new Date();
 let days = [
@@ -29,7 +29,7 @@ let month = [
 let actualDay = days[dateTime.getDay()];
 let actualMonth = month[dateTime.getMonth()];
 today.innerHTML = `${actualDay} - ${actualMonth} ${dateTime.getDate()}, ${dateTime.getFullYear()} at ${dateTime.getHours()}:${dateTime.getMinutes()}`;
-**/
+
 
 
 
@@ -106,17 +106,37 @@ function retrievePosition(position) {
 
 function getForecast (response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = response.data.list[0];
+  forecastElement.innerHTML = null; 
+  let forecast = null;
 
-  forecastElement.innerHTML = 
+  for (let index=0; index < 6; index++) {
+  forecast = response.data.list[index];
+  forecastElement.innerHTML += 
         ` <div class="col-2">
-            <p>12:00</p>
+            <p>${formatHours(forecast.dt*1000)}</p>
         
             <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"></img>
             <div class = weather-temp> 
               <strong> ${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°;
             </div>
           </div>`
+  }
+}
+
+function formatHours (timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  if (hours < 10 ) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+
+  }
+
+  return `${hours}:${minutes}`;
 }
 
 
