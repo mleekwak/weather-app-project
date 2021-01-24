@@ -10,11 +10,8 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/459745ba43.js"
       crossorigin="anonymous"
@@ -24,10 +21,11 @@
 
   <body>
     <div class="container">
+      <div class="appWrapper">
       <div class="header">
         <form id="search">
-          <input type="text" id="city-search" placeholder="Pick a city" />
-          <input type="submit" id="submit-button" value="Search!" />
+          <input type="text" id="city-search" placeholder="Type a city name" />
+          <input type="submit" id="submit-button" value="Search" />
           <input
             type="submit"
             id="currentLocation-button"
@@ -36,42 +34,39 @@
         </form>
       </div>
 
-      <div id="mainWeather">
-        <h1 id="city-header">Search a city!</h1>
-        <img src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png" alt = " " id = "mainIcon"/>
-        <div id="tempConverts"></div>
-          <h2 id="actual-temp">The temperature will show up here</h2>
-          <a href="" id="farenheit">°F</a>
-          <a href="" id="celsius">°C</a>
-        </div>
-
-        <div id="stats">
-          <ul id="facts">
-            <li id="weatherDescription">Weather description:</li>
-            <li id="humidity">Humidity:</li>
-            <li id="windSpeed">Wind Speed:</li>
-          </ul>
-        </div>
-      </div>
+ 
+      <div class="row">
        
+            <div id="mainWeather">
+              <div id="main">
+                <h1 id="city-header">Search a city!</h1>
+                
+               
+                 <img src="" id="mainIcon" />
+                <h2 id="actual-temp"></h2>
+              <div id= "tempConverts">
+                  <a href="" id="farenheit">°F</a>
+                  <a href="" id="celsius">°C</a></div>
+               
+              </div>
+           </div>
 
-        
+            <ul id="facts">
+              <li id="weatherDescription"></li>
+              <li id="humidity"></li>
+              <li id="windSpeed"></li>
+            </ul>
 
-      <h3 id="date-temp">Current Date</h3>
-       
-      </div>
-
+        </div>
+          <h3 id="date-temp"></h3>
+    
       <hr />
       <div class="forecast">
-        <h2>6-day forecast</h2>
+        <h2>Weather forecast</h2>
+         <div class="row" id="forecast"></div>
 
-        <div class="row" id="forecast">
-         
-        </div>
-        
       </div>
-      <img src="src/weather.svg" />
-
+      </div>
       <footer>
         <small>Created by Michelle Lee. Check out the <a href="https://github.com/mleekwak/weather-app-project">Github repository</a></small>
       </footer>

@@ -1,4 +1,4 @@
-//Get date and time
+//Get date and time    add in: <h3 id="date-temp">Current Date</h3>
 let today = document.querySelector("#date-temp");
 let dateTime = new Date();
 let days = [
@@ -41,12 +41,14 @@ function citySearch(event) {
   event.preventDefault();
   let city = document.querySelector("#city-search");
   let cityHeader = document.querySelector("#city-header");
-  cityHeader.innerHTML = city.value;
+  cityHeader.innerHTML = city.value.toUpperCase();
 
   let apiKey = "ca91599099eeb1c9f12671ff71efe720";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(getTemp);
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&appid=${apiKey}&units=imperial`;
+  axios.get(forecastUrl).then(getForecast);
 
   function getTemp(response) {
     let cel = document.querySelector("#celsius");
@@ -72,7 +74,7 @@ function citySearch(event) {
 
     
     let windSpeed = document.querySelector("#windSpeed");
-    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
+    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
 
     let weatherDescription = document.querySelector("#weatherDescription");
     weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
@@ -147,7 +149,7 @@ function getTemp(response) {
   let far = document.querySelector("#farenheit");
   let temp = document.querySelector("#actual-temp");
   let cityHeader = document.querySelector("#city-header");
-  cityHeader.innerHTML = `Looks like you're in ${response.data.name}`;
+  cityHeader.innerHTML = `${response.data.name}`;
   temp.innerHTML = Math.round(response.data.main.temp) + "°F";
   cel.addEventListener("click", fConvert);
   far.addEventListener("click", cConvert);
@@ -165,7 +167,7 @@ function getTemp(response) {
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
     }
     let windSpeed = document.querySelector("#windSpeed");
-    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
+    windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
 
     let weatherDescription = document.querySelector("#weatherDescription");
   
