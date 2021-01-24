@@ -31,40 +31,42 @@
             id="currentLocation-button"
             value="Get current location"
           />
+         
         </form>
       </div>
-
+      <h3 id="date-temp"></h3>
  
-      <div class="row">
-       
-            <div id="mainWeather">
-              <div id="main">
-                <h1 id="city-header">Search a city!</h1>
-                
-               
-                 <img src="" id="mainIcon" />
-                <h2 id="actual-temp"></h2>
-              <div id= "tempConverts">
-                  <a href="" id="farenheit">°F</a>
-                  <a href="" id="celsius">°C</a></div>
-               
-              </div>
-           </div>
-
+      <div class="row" id="mainWeather">
+          <div class="col-6">
+            <h1 id="city-header">Search a city</h1>
+            <h2 id="actual-temp"></h2>
+            <div id="tempConverts">
+              <p> View temperature in: <a href="" id="farenheit">°F</a>
+                or <a href="" id="celsius">°C</a>
+              </p>
+            </div>
+            </div>
+           
+        
+          <div class="col-6">
+            <img src="src/weather.svg" id="mainIcon" />
+           
             <ul id="facts">
               <li id="weatherDescription"></li>
               <li id="humidity"></li>
               <li id="windSpeed"></li>
             </ul>
+          </div>
 
         </div>
-          <h3 id="date-temp"></h3>
     
       <hr />
+
       <div class="forecast">
         <h2>Weather forecast</h2>
          <div class="row" id="forecast"></div>
 
+      </div>
       </div>
       </div>
       <footer>
