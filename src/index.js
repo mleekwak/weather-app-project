@@ -72,10 +72,6 @@ function citySearch(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
     }
-
-    let timeZone = document.querySelector("#timeZone");
-    timeZone.innerHTML = `${response.data.timezone}`;
-
     
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
