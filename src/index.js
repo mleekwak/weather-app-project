@@ -82,9 +82,7 @@ function citySearch(event) {
 
     let weatherDescription = document.querySelector("#weatherDescription");
     weatherDescription.innerHTML = `${(response.data.weather[0].description.toUpperCase())}`;
-    
-    let feelsLike = document.querySelector("#feelsLike");
-    feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
+
 
     let humidity = document.querySelector("#humidity");
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
