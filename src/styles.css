@@ -99,8 +99,10 @@ ul {
   list-style: none;
 }
 
-footer {
+footer a {
   margin: 10px;
+  text-decoration: none;
+  color: #2ee59d;
 }
 
 .table {

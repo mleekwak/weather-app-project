@@ -51,10 +51,11 @@ function citySearch(event) {
   axios.get(forecastUrl).then(getForecast);
 
   function getTemp(response) {
+
+
     let cel = document.querySelector("#celsius");
     let far = document.querySelector("#farenheit");
     let temp = document.querySelector("#actual-temp");
-
 
     temp.innerHTML = Math.round(response.data.main.temp) + "°F";
     cel.addEventListener("click", fConvert);
@@ -72,13 +73,19 @@ function citySearch(event) {
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
     }
 
+    let timeZone = document.querySelector("#timeZone");
+    timeZone.innerHTML = `${response.data.timezone}`;
+
     
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
 
     let weatherDescription = document.querySelector("#weatherDescription");
-    weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
+    weatherDescription.innerHTML = `${(response.data.weather[0].description.toUpperCase())}`;
     
+    let feelsLike = document.querySelector("#feelsLike");
+    feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
+
     let humidity = document.querySelector("#humidity");
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
@@ -106,24 +113,7 @@ function retrievePosition(position) {
   axios.get(forecastUrl).then(getForecast);
 }
 
-function getForecast (response) {
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = null; 
-  let forecast = null;
 
-  for (let index=0; index < 6; index++) {
-  forecast = response.data.list[index];
-  forecastElement.innerHTML += 
-        ` <div class="col-2">
-            <p>${formatHours(forecast.dt*1000)}</p>
-        
-            <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"></img>
-            <div class = weather-temp> 
-              <strong> ${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°;
-            </div>
-          </div>`
-  }
-}
 
 function formatHours (timestamp) {
   let date = new Date(timestamp);
@@ -169,10 +159,11 @@ function getTemp(response) {
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
 
-    let weatherDescription = document.querySelector("#weatherDescription");
-  
-    weatherDescription.innerHTML = `Weather description: ${response.data.weather[0].description}`;
+  let weatherDescription = document.querySelector("#weatherDescription");
+    weatherDescription.innerHTML = `${(response.data.weather[0].description.toUpperCase())}`;
     
+    let feelsLike = document.querySelector("#feelsLike");
+    feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
     let humidity = document.querySelector("#humidity");
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
@@ -180,6 +171,24 @@ function getTemp(response) {
     mainIcon.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
-//Forecasting 
+//Forecast
+function getForecast (response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null; 
+  let forecast = null;
 
-
+  for (let index=0; index < 6; index++) {
+  forecast = response.data.list[index];
+  forecastElement.innerHTML += 
+        ` <div class="col-2">
+            <p>${formatHours(forecast.dt*1000)}</p>
+        
+            <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"></img>
+            <div class = "weather-temp"> 
+              <strong> <div class = "forecastTempMax">${Math.round(forecast.main.temp_max)}°</div></strong> 
+              <div class = "forecastTempMin"> ${Math.round(forecast.main.temp_min)}° </div>
+            </div>
+          </div>`
+     
+   }
+}
