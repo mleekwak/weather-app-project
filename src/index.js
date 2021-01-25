@@ -65,13 +65,15 @@ function citySearch(event) {
     //(1°F − 32) × 5/9 = -17.22°C
     function fConvert(event) {
       event.preventDefault();
-      temp.innerHTML = `${Math.round(
-        (`${response.data.main.temp}` - 32) * (5 / 9))}°C`;
+      temp.innerHTML = `${Math.round((`${response.data.main.temp}` - 32) * (5 / 9))}°C`;
+    feelsLike.innerHTML = `Feels like: ${Math.round((`${response.data.main.feels_like}`-32)*(5/9))}°C`;
     }
     function cConvert(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+      feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
     }
+
     
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
@@ -135,6 +137,8 @@ function getTemp(response) {
   let far = document.querySelector("#farenheit");
   let temp = document.querySelector("#actual-temp");
   let cityHeader = document.querySelector("#city-header");
+  let feelsLike = document.querySelector("#feelsLike");
+
   cityHeader.innerHTML = `${response.data.name}`;
   temp.innerHTML = Math.round(response.data.main.temp) + "°F";
   cel.addEventListener("click", fConvert);
@@ -142,24 +146,25 @@ function getTemp(response) {
   //f and c conversion
   //((1°C × 9/5) + 32 = 33.8°F
   //(1°F − 32) × 5/9 = -17.22°C
-    function fConvert(event) {
+
+   function fConvert(event) {
       event.preventDefault();
-      temp.innerHTML = `${Math.round(
-        (`${response.data.main.temp}` - 32) * (5 / 9)
-      )}°C`;
+      temp.innerHTML = `${Math.round((`${response.data.main.temp}` - 32) * (5 / 9))}°C`;
+    feelsLike.innerHTML = `Feels like: ${Math.round((`${response.data.main.feels_like}`-32)*(5/9))}°C`;
     }
     function cConvert(event) {
       event.preventDefault();
       temp.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+      feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
     }
+
     let windSpeed = document.querySelector("#windSpeed");
     windSpeed.innerHTML = `Wind Speed: ${response.data.wind.speed} miles/hour`;
 
-  let weatherDescription = document.querySelector("#weatherDescription");
+    let weatherDescription = document.querySelector("#weatherDescription");
     weatherDescription.innerHTML = `${(response.data.weather[0].description.toUpperCase())}`;
     
-    let feelsLike = document.querySelector("#feelsLike");
-    feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
+   
     let humidity = document.querySelector("#humidity");
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
