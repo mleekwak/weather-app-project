@@ -56,6 +56,7 @@ function citySearch(event) {
     let cel = document.querySelector("#celsius");
     let far = document.querySelector("#farenheit");
     let temp = document.querySelector("#actual-temp");
+    let feelsLike = document.querySelector("#feelsLike");
 
     temp.innerHTML = Math.round(response.data.main.temp) + "°F";
     feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
