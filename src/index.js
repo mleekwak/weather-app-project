@@ -58,6 +58,7 @@ function citySearch(event) {
     let temp = document.querySelector("#actual-temp");
 
     temp.innerHTML = Math.round(response.data.main.temp) + "°F";
+    feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
     cel.addEventListener("click", fConvert);
     far.addEventListener("click", cConvert);
     //f and c conversion
@@ -141,6 +142,8 @@ function getTemp(response) {
 
   cityHeader.innerHTML = `${response.data.name}`;
   temp.innerHTML = Math.round(response.data.main.temp) + "°F";
+  feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°F`;
+
   cel.addEventListener("click", fConvert);
   far.addEventListener("click", cConvert);
   //f and c conversion
