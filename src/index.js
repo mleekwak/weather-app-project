@@ -43,7 +43,7 @@ function citySearch(event) {
   let cityHeader = document.querySelector("#city-header");
   cityHeader.innerHTML = city.value.toUpperCase();
 
-  let apiKey = "ca91599099eeb1c9f12671ff71efe720";
+  let apiKey = "545996832190a3bc0bc230c58243bdec";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(getTemp);
